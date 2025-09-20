@@ -46,6 +46,14 @@
   },
   "homepage": "https://9oHigh.github.io/usket.wedding_invitation",
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@typescript-eslint/eslint-plugin": "^8.44.0",
+    "@typescript-eslint/parser": "^8.44.0",
+    "eslint": "8",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "gh-pages": "^6.3.0",
+    "jiti": "^2.5.1",
+    "prettier": "^3.6.2"
   }
 }

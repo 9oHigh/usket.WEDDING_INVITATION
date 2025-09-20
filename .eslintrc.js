@@ -15,7 +15,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended', // Prettier와 충돌 방지
+    'plugin:prettier/recommended',
   ],
   rules: {
     'prettier/prettier': 'error',
