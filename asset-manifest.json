@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/usket.WEDDING_INVITATION/static/css/main.918585fd.css",
+    "main.js": "/usket.WEDDING_INVITATION/static/js/main.0ca4a453.js",
+    "index.html": "/usket.WEDDING_INVITATION/index.html",
+    "main.918585fd.css.map": "/usket.WEDDING_INVITATION/static/css/main.918585fd.css.map",
+    "main.0ca4a453.js.map": "/usket.WEDDING_INVITATION/static/js/main.0ca4a453.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.918585fd.css",
+    "static/js/main.0ca4a453.js"
+  ]
+}
