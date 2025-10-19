@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/usket.WEDDING_INVITATION/static/css/main.45757bdd.css",
-    "main.js": "/usket.WEDDING_INVITATION/static/js/main.42a30788.js",
+    "main.js": "/usket.WEDDING_INVITATION/static/js/main.91171d04.js",
     "static/media/Cafe24Oneprettynight.ttf": "/usket.WEDDING_INVITATION/static/media/Cafe24Oneprettynight.a23d20e7fbd4eac27421.ttf",
     "static/media/wedding-song.mp3": "/usket.WEDDING_INVITATION/static/media/wedding-song.84546d6f2d4953cdbdbd.mp3",
     "index.html": "/usket.WEDDING_INVITATION/index.html",
     "main.45757bdd.css.map": "/usket.WEDDING_INVITATION/static/css/main.45757bdd.css.map",
-    "main.42a30788.js.map": "/usket.WEDDING_INVITATION/static/js/main.42a30788.js.map"
+    "main.91171d04.js.map": "/usket.WEDDING_INVITATION/static/js/main.91171d04.js.map"
   },
   "entrypoints": [
     "static/css/main.45757bdd.css",
-    "static/js/main.42a30788.js"
+    "static/js/main.91171d04.js"
   ]
 }
