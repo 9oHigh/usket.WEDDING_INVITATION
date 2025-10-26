@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/usket.WEDDING_INVITATION/static/css/main.05bead99.css",
-    "main.js": "/usket.WEDDING_INVITATION/static/js/main.10b3c0ca.js",
+    "main.css": "/usket.WEDDING_INVITATION/static/css/main.48e3cf56.css",
+    "main.js": "/usket.WEDDING_INVITATION/static/js/main.b04dd78d.js",
     "static/media/Cafe24Oneprettynight.ttf": "/usket.WEDDING_INVITATION/static/media/Cafe24Oneprettynight.a23d20e7fbd4eac27421.ttf",
     "static/media/wedding-song.mp3": "/usket.WEDDING_INVITATION/static/media/wedding-song.84546d6f2d4953cdbdbd.mp3",
     "static/media/main-bg.jpg": "/usket.WEDDING_INVITATION/static/media/main-bg.5a2a97a5459a0f3f8398.jpg",
     "static/media/Cafe24Lovingu.ttf": "/usket.WEDDING_INVITATION/static/media/Cafe24Lovingu.99ab7328c8b03ffed383.ttf",
     "static/media/Blacksword.otf": "/usket.WEDDING_INVITATION/static/media/Blacksword.deaedec736e9442caf72.otf",
     "index.html": "/usket.WEDDING_INVITATION/index.html",
-    "main.05bead99.css.map": "/usket.WEDDING_INVITATION/static/css/main.05bead99.css.map",
-    "main.10b3c0ca.js.map": "/usket.WEDDING_INVITATION/static/js/main.10b3c0ca.js.map"
+    "main.48e3cf56.css.map": "/usket.WEDDING_INVITATION/static/css/main.48e3cf56.css.map",
+    "main.b04dd78d.js.map": "/usket.WEDDING_INVITATION/static/js/main.b04dd78d.js.map"
   },
   "entrypoints": [
-    "static/css/main.05bead99.css",
-    "static/js/main.10b3c0ca.js"
+    "static/css/main.48e3cf56.css",
+    "static/js/main.b04dd78d.js"
   ]
 }
