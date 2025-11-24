@@ -1,290 +1,151 @@
 // src/components/BackgroundMusic/BackgroundMusic.tsx
-import React, { useEffect, useRef, useState } from 'react';
-
-interface MusicTrack {
-  title: string;
-  artist: string;
-  src: string;
-  duration?: number;
-}
+import React, { useEffect, useRef, useState } from "react";
 
 interface BackgroundMusicProps {
-  tracks: MusicTrack[];
+  src: string;
   autoPlay?: boolean;
   defaultVolume?: number;
-  showPlayer?: boolean;
+  fadeInDuration?: number;
 }
 
 const BackgroundMusic: React.FC<BackgroundMusicProps> = ({
-  tracks,
-  autoPlay = false,
+  src,
+  autoPlay = true,
   defaultVolume = 0.3,
-  showPlayer = true
+  fadeInDuration = 4500,
 }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [isMuted, setIsMuted] = useState(true); // 초기엔 muted 상태
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [volume, setVolume] = useState(defaultVolume);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [userInteracted, setUserInteracted] = useState(false);
-  const [showVolumeControl, setShowVolumeControl] = useState(false);
+  const fadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const currentTrack = tracks[currentTrackIndex];
+  const fadeIn = (
+    audio: HTMLAudioElement,
+    targetVolume: number,
+    duration: number
+  ) => {
+    const steps = 50;
+    const stepDuration = duration / steps;
+    const volumeIncrement = targetVolume / steps;
+    let currentStep = 0;
+    audio.volume = 0;
+
+    fadeIntervalRef.current = setInterval(() => {
+      currentStep++;
+      const newVolume = Math.min(volumeIncrement * currentStep, targetVolume);
+      audio.volume = newVolume;
+      if (currentStep >= steps) {
+        if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
+        console.log("🎵 페이드인 완료, 최종 볼륨:", audio.volume);
+      }
+    }, stepDuration);
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const handleLoadedData = () => {
-      setIsLoaded(true);
-      setDuration(audio.duration);
-    };
+    audio.loop = true;
+    audio.muted = true; // 초기에는 muted로 시작 (정책 회피용)
 
-    const handleTimeUpdate = () => {
-      setCurrentTime(audio.currentTime);
-    };
+    const tryPlay = async () => {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+        console.log("✅ 자동 재생 성공");
 
-    const handleEnded = () => {
-      const nextIndex = (currentTrackIndex + 1) % tracks.length;
-      setCurrentTrackIndex(nextIndex);
-    };
-
-    const handleError = () => {
-      console.error('오디오 로드 실패:', currentTrack.src);
-    };
-
-    audio.addEventListener('loadeddata', handleLoadedData);
-    audio.addEventListener('timeupdate', handleTimeUpdate);
-    audio.addEventListener('ended', handleEnded);
-    audio.addEventListener('error', handleError);
-
-    audio.volume = volume;
-
-    return () => {
-      audio.removeEventListener('loadeddata', handleLoadedData);
-      audio.removeEventListener('timeupdate', handleTimeUpdate);
-      audio.removeEventListener('ended', handleEnded);
-      audio.removeEventListener('error', handleError);
-    };
-  }, [currentTrackIndex, volume, tracks.length, currentTrack.src]);
-
-  useEffect(() => {
-    const handleUserInteraction = () => {
-      if (!userInteracted) {
-        setUserInteracted(true);
-        if (autoPlay && !isPlaying) {
-          playMusic();
-        }
+        // iOS Safari에서는 muted=true로만 자동재생 가능하므로
+        // 짧은 지연 후 unmute + 페이드인 시도
+        setTimeout(() => {
+          if (!isMuted) return; // 이미 해제된 경우
+          audio.muted = false;
+          setIsMuted(false);
+          fadeIn(audio, defaultVolume, fadeInDuration);
+        }, 1000);
+      } catch (err) {
+        console.warn("❌ 자동재생 차단됨, 사용자 인터랙션 대기", err);
+        // 클릭/터치 시 재시도
+        const unlock = async () => {
+          try {
+            await audio.play();
+            audio.muted = false;
+            setIsMuted(false);
+            fadeIn(audio, defaultVolume, fadeInDuration);
+            setIsPlaying(true);
+            document.removeEventListener("click", unlock);
+            document.removeEventListener("touchstart", unlock);
+          } catch {}
+        };
+        document.addEventListener("click", unlock, { once: true });
+        document.addEventListener("touchstart", unlock, { once: true });
       }
     };
 
-    document.addEventListener('click', handleUserInteraction, { once: true });
-    document.addEventListener('touchstart', handleUserInteraction, { once: true });
+    // 페이지 로드 후 자동 재생 시도
+    if (autoPlay) {
+      tryPlay();
+    }
 
     return () => {
-      document.removeEventListener('click', handleUserInteraction);
-      document.removeEventListener('touchstart', handleUserInteraction);
+      if (fadeIntervalRef.current) clearInterval(fadeIntervalRef.current);
     };
-  }, [autoPlay, isPlaying, userInteracted]);
+  }, [src]);
 
-  const playMusic = async () => {
+  const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
-
-    try {
-      await audio.play();
-      setIsPlaying(true);
-    } catch (error) {
-      console.error('음악 재생 실패:', error);
-    }
-  };
-
-  const pauseMusic = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    audio.pause();
-    setIsPlaying(false);
-  };
-
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      pauseMusic();
+    if (isMuted) {
+      audio.muted = false;
+      setIsMuted(false);
+      fadeIn(audio, defaultVolume, fadeInDuration);
     } else {
-      playMusic();
+      audio.muted = true;
+      setIsMuted(true);
     }
   };
-
-  const changeTrack = (index: number) => {
-    setCurrentTrackIndex(index);
-    setCurrentTime(0);
-  };
-
-  const nextTrack = () => {
-    const nextIndex = (currentTrackIndex + 1) % tracks.length;
-    changeTrack(nextIndex);
-  };
-
-  const prevTrack = () => {
-    const prevIndex = currentTrackIndex === 0 ? tracks.length - 1 : currentTrackIndex - 1;
-    changeTrack(prevIndex);
-  };
-
-  const handleVolumeChange = (newVolume: number) => {
-    setVolume(newVolume);
-  };
-
-  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
-    const audio = audioRef.current;
-    if (!audio || !duration) return;
-
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-    const newTime = (clickX / width) * duration;
-    
-    audio.currentTime = newTime;
-    setCurrentTime(newTime);
-  };
-
-  const formatTime = (time: number): string => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  if (!showPlayer) return null;
 
   return (
     <>
-      {/* 히든 오디오 엘리먼트 */}
-      <audio
-        ref={audioRef}
-        src={currentTrack?.src}
-        loop={false}
-        preload="metadata"
-      />
+      <audio ref={audioRef} preload="auto" loop>
+        <source src={src} type="audio/mpeg" />
+        브라우저가 오디오를 지원하지 않습니다.
+      </audio>
 
-      {/* 플로팅 음악 플레이어 */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 p-4 min-w-80 max-w-sm">
-          
-          {/* 트랙 정보 */}
-          <div className="mb-3">
-            <div className="text-sm font-semibold text-gray-800 truncate">
-              🎵 {currentTrack?.title || '음악을 선택해주세요'}
-            </div>
-            <div className="text-xs text-gray-600 truncate">
-              {currentTrack?.artist || ''}
-            </div>
-          </div>
-
-          {/* 진행률 바 */}
-          <div className="mb-3">
-            <div 
-              className="w-full h-2 bg-gray-200 rounded-full cursor-pointer"
-              onClick={handleSeek}
-            >
-              <div 
-                className="h-full bg-gradient-to-r from-pink-400 to-purple-500 rounded-full transition-all duration-300"
-                style={{ 
-                  width: duration ? `${(currentTime / duration) * 100}%` : '0%' 
-                }}
-              />
-            </div>
-            <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>{formatTime(currentTime)}</span>
-              <span>{formatTime(duration)}</span>
-            </div>
-          </div>
-
-          {/* 컨트롤 버튼들 */}
-          <div className="flex items-center justify-center space-x-4 mb-2">
-            
-            {/* 이전 곡 */}
-            <button
-              onClick={prevTrack}
-              className="p-2 text-gray-600 hover:text-gray-800 transition-colors duration-300"
-              disabled={tracks.length <= 1}
-            >
-              ⏮️
-            </button>
-
-            {/* 재생/일시정지 */}
-            <button
-              onClick={togglePlayPause}
-              className="p-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
-              disabled={!isLoaded}
-            >
-              {isPlaying ? '⏸️' : '▶️'}
-            </button>
-
-            {/* 다음 곡 */}
-            <button
-              onClick={nextTrack}
-              className="p-2 text-gray-600 hover:text-gray-800 transition-colors duration-300"
-              disabled={tracks.length <= 1}
-            >
-              ⏭️
-            </button>
-
-            {/* 볼륨 컨트롤 토글 */}
-            <button
-              onClick={() => setShowVolumeControl(!showVolumeControl)}
-              className="p-2 text-gray-600 hover:text-gray-800 transition-colors duration-300"
-            >
-              {volume === 0 ? '🔇' : volume < 0.5 ? '🔉' : '🔊'}
-            </button>
-          </div>
-
-          {/* 볼륨 슬라이더 */}
-          {showVolumeControl && (
-            <div className="flex items-center space-x-2 mb-2">
-              <span className="text-xs text-gray-500">🔇</span>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.1"
-                value={volume}
-                onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-                className="flex-1 h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-              />
-              <span className="text-xs text-gray-500">🔊</span>
-            </div>
-          )}
-
-          {/* 트랙 리스트 (간단 버전) */}
-          {tracks.length > 1 && (
-            <div className="border-t border-gray-200 pt-2">
-              <div className="flex flex-wrap gap-1">
-                {tracks.map((track, index) => (
-                  <button
-                    key={index}
-                    onClick={() => changeTrack(index)}
-                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all duration-300 ${
-                      index === currentTrackIndex
-                        ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* 사용자 상호작용 안내 */}
-          {!userInteracted && (
-            <div className="text-xs text-gray-500 text-center mt-2">
-              음악 재생을 위해 화면을 터치해주세요
-            </div>
-          )}
-        </div>
-      </div>
+      <button
+        onClick={toggleMute}
+        className="fixed top-6 right-6 z-50 p-3 bg-white bg-opacity-90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        aria-label={isMuted ? "음소거 해제" : "음소거"}
+      >
+        {isMuted ? (
+          <svg
+            className="w-6 h-6 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="w-6 h-6 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+            />
+          </svg>
+        )}
+      </button>
     </>
   );
 };

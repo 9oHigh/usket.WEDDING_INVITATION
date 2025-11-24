@@ -12,6 +12,7 @@
     "react": "^19.1.1",
     "react-calendar": "^6.0.0",
     "react-dom": "^19.1.1",
+    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.9.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.0"
@@ -22,7 +23,10 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf node_modules/.cache build dist .parcel-cache .next && yarn cache clean",
+    "rebuild": "yarn clean && yarn install && yarn build && yarn start",
+    "deploy-clean": "yarn clean && yarn install && yarn build && yarn deploy"
   },
   "browserslist": {
     "production": [

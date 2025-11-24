@@ -43,3 +43,10 @@ pids
 
 # Misc
 *.tgz
+
+# -------------------------
+# Custom: keep local images
+# -------------------------
+# Do NOT ignore src/assets
+src/assets/images/
+
