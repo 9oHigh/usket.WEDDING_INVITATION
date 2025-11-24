@@ -1,8 +1,30 @@
 {
   "files": {
-    "main.css": "/usket.WEDDING_INVITATION/static/css/main.1f8762c2.css",
-    "main.js": "/usket.WEDDING_INVITATION/static/js/main.57965612.js",
+    "main.css": "/usket.WEDDING_INVITATION/static/css/main.4d1b65b8.css",
+    "main.js": "/usket.WEDDING_INVITATION/static/js/main.52da6810.js",
+    "static/media/19.png": "/usket.WEDDING_INVITATION/static/media/19.424b86bf1a2d7223bed9.png",
+    "static/media/14.png": "/usket.WEDDING_INVITATION/static/media/14.ad7df7620d1e6c91c65d.png",
+    "static/media/16.png": "/usket.WEDDING_INVITATION/static/media/16.f6b445b2cff389a6f723.png",
+    "static/media/15.png": "/usket.WEDDING_INVITATION/static/media/15.fe313c9ce64db586286c.png",
+    "static/media/12.png": "/usket.WEDDING_INVITATION/static/media/12.7f300509758253c26c72.png",
+    "static/media/11.png": "/usket.WEDDING_INVITATION/static/media/11.0cf4005dedc1053b88ed.png",
+    "static/media/18.png": "/usket.WEDDING_INVITATION/static/media/18.6fccccc83d7ca69a5280.png",
+    "static/media/20.png": "/usket.WEDDING_INVITATION/static/media/20.30ba6f686768923cbb5d.png",
+    "static/media/21.png": "/usket.WEDDING_INVITATION/static/media/21.74a2a029538abdc6f8d9.png",
+    "static/media/13.png": "/usket.WEDDING_INVITATION/static/media/13.f6e2216e67db41493dae.png",
+    "static/media/4.jpg": "/usket.WEDDING_INVITATION/static/media/4.dc954dce497951ad42e4.jpg",
+    "static/media/3.jpg": "/usket.WEDDING_INVITATION/static/media/3.34ebe0f5044260f27ebf.jpg",
     "static/media/Cafe24Oneprettynight.ttf": "/usket.WEDDING_INVITATION/static/media/Cafe24Oneprettynight.a23d20e7fbd4eac27421.ttf",
+    "static/media/2.jpg": "/usket.WEDDING_INVITATION/static/media/2.9443cae7181ccc5327be.jpg",
+    "static/media/22.png": "/usket.WEDDING_INVITATION/static/media/22.22ad2738a6c8a7c5549e.png",
+    "static/media/7.jpg": "/usket.WEDDING_INVITATION/static/media/7.e9429c60d634c368d3ee.jpg",
+    "static/media/6.jpg": "/usket.WEDDING_INVITATION/static/media/6.2122f91ee3a6a977f9ed.jpg",
+    "static/media/9.jpg": "/usket.WEDDING_INVITATION/static/media/9.499c014d2ace4d193277.jpg",
+    "static/media/5.jpg": "/usket.WEDDING_INVITATION/static/media/5.294a601cc638fcccb29f.jpg",
+    "static/media/1.jpg": "/usket.WEDDING_INVITATION/static/media/1.0a13c69278d5808f8e32.jpg",
+    "static/media/17.png": "/usket.WEDDING_INVITATION/static/media/17.a16d5b3ce97e6246ab13.png",
+    "static/media/8.jpg": "/usket.WEDDING_INVITATION/static/media/8.96defdc0f35a85054f1a.jpg",
+    "static/media/10.jpg": "/usket.WEDDING_INVITATION/static/media/10.16ee7a626791ab756fd2.jpg",
     "static/media/wedding-song.mp3": "/usket.WEDDING_INVITATION/static/media/wedding-song.84546d6f2d4953cdbdbd.mp3",
     "static/media/main-bg.jpeg": "/usket.WEDDING_INVITATION/static/media/main-bg.4b5fc717abbdde96b4f4.jpeg",
     "static/media/t-map-logo.png": "/usket.WEDDING_INVITATION/static/media/t-map-logo.055ae4442babc4fa3bd2.png",
@@ -14,11 +36,11 @@
     "static/media/subway.png": "/usket.WEDDING_INVITATION/static/media/subway.2849ea9efc966f854766.png",
     "static/media/bus.png": "/usket.WEDDING_INVITATION/static/media/bus.e9d350705959b7efccf3.png",
     "index.html": "/usket.WEDDING_INVITATION/index.html",
-    "main.1f8762c2.css.map": "/usket.WEDDING_INVITATION/static/css/main.1f8762c2.css.map",
-    "main.57965612.js.map": "/usket.WEDDING_INVITATION/static/js/main.57965612.js.map"
+    "main.4d1b65b8.css.map": "/usket.WEDDING_INVITATION/static/css/main.4d1b65b8.css.map",
+    "main.52da6810.js.map": "/usket.WEDDING_INVITATION/static/js/main.52da6810.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f8762c2.css",
-    "static/js/main.57965612.js"
+    "static/css/main.4d1b65b8.css",
+    "static/js/main.52da6810.js"
   ]
 }
