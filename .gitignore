@@ -49,4 +49,5 @@ pids
 # -------------------------
 # Do NOT ignore src/assets
 src/assets/images/
+src/assets/music/
 
