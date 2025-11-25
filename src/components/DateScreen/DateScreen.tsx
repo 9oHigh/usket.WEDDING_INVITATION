@@ -120,7 +120,7 @@ const DateScreen: React.FC<DateScreenProps> = ({
   return (
     <section
       id="date-section"
-      className="bg-[#F5EFE6] relative h-screen w-full flex flex-col justify-center items-center px-8 py-20"
+      className="bg-[#F5EFE6] relative w-full flex flex-col justify-center items-center px-8 py-20"
     >
       <div className="w-full max-w-md">
         {/* 날짜 표시 */}

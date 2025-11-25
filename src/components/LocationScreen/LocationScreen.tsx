@@ -180,7 +180,7 @@ const LocationScreen: React.FC<LocationScreenProps> = ({
                 {/* 우측 텍스트 */}
                 <div className="flex flex-row">
                   <span className="font-cafe24 text-gray-900 text-sm">
-                    8호선 천호역 10번 출구 도보 약 5분
+                    5호선, 8호선 천호역 10번 출구 바로앞
                   </span>
                 </div>
               </div>
@@ -201,14 +201,13 @@ const LocationScreen: React.FC<LocationScreenProps> = ({
             {/* 🔹 좌측 정렬 고정 */}
             <div className="text-gray-700 text-left">
               <div className="flex flex-col space-y-1">
-                <span className="font-cafe24 text-gray-900 text-sm">
-                  간선 - 30-3, 3214, 3216, 3220, 3315
+                <span className="font-cafe24 text-gray-900 text-sm mb-2">
+                  천호역 또는 천호사거리 하차
                 </span>
                 <span className="font-cafe24 text-gray-900 text-sm">
-                  지선 - 4211, 4212, 4213, 4214
-                </span>
-                <span className="font-cafe24 text-gray-900 text-sm">
-                  직행 - 1100, 1200, 1300, 1400
+                  130, 340, 341, 342, 370, 3214, 3316, 3318, 3321, 3411, 4318,
+                  1-4, 13, 13-2, 16, 23, 30, 30-3, 112-1, 112-5, 1113, 1113-1,
+                  1113-2, 1113-10, 1113-11, 3500, 강동 05, 공항버스 6200
                 </span>
               </div>
             </div>
@@ -229,7 +228,7 @@ const LocationScreen: React.FC<LocationScreenProps> = ({
                 {/* 우측 텍스트 */}
                 <div className="flex flex-row">
                   <span className="font-cafe24 text-gray-900 text-sm">
-                    “라비니움 리츄얼홀” 또는 서울시 강동구 천호대로 1017
+                    라비니움 또는 서울시 강동구 천호대로 996
                   </span>
                 </div>
               </div>
@@ -240,12 +239,16 @@ const LocationScreen: React.FC<LocationScreenProps> = ({
                 ※ 웨딩홀 주차장이 협소하여 공영주차장 이용 부탁드립니다.
                 <br />
                 <br />
-                ※ 서울시 강동구 천호대로 1026-1(성내동 57-12) 혹은 천호역 6번
-                출구 앞 “천호역 공영주차장” 지하 1층과 2층 이용해주시면
-                감사하겠습니다.
+                ※ 공영 주차장 ※
                 <br />
-                <br />※ 공영주차장 셔틀버스 상시 운행 <br />- A~D 기둥 20-60번
-                사이 탑승가능
+                네비게이션 주소검색: 서울시 강동구 천호대로 1026-1
+                <br />
+                (천호역 6번출구 앞 / 천호지하공영주차장 지하 1, 2층)
+                <br />
+                주차 위치:기둥번호 A, B, C, D 20 ~ 60번 사이 주차
+                <br />
+                <br />※ 공영주차장 셔틀버스 상시 운행 <br />- A, B, C, D 기둥
+                20-60번 사이 탑승가능
               </p>
             </div>
           </div>

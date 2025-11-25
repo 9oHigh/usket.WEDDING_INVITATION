@@ -29,6 +29,34 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Deluxe";
+  src: url("./assets/font/Deluxe.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Motterdam";
+  src: url("./assets/font/Motterdam.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AndreaBellarosa";
+  src: url("./assets/font/AndreaBellarosa.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AnimalChariot";
+  src: url("./assets/font/AnimalChariot.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* 스크롤 부드럽게 */
 html {
   scroll-behavior: smooth;

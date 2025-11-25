@@ -30,7 +30,7 @@ const MainScreen: React.FC<MainScreenProps> = ({
 
   const date = parseDate(weddingDate);
   const day = date.getDate();
-  const month = date.toLocaleString("en-US", { month: "short" }).toUpperCase();
+  const month = "Jan";
   const year = date.getFullYear();
 
   // 날짜가 유효한지 확인
@@ -39,8 +39,8 @@ const MainScreen: React.FC<MainScreenProps> = ({
   }
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-white">
-      <div className="relative w-full h-full max-w-[720px] mx-auto">
+    <section className="relative w-full overflow-hidden bg-[#F5EFE6]">
+      <div className="relative w-full h-screen max-w-[720px] mx-auto">
         {/* 🔹 배경 이미지 */}
         <img
           src={backgroundImage}
@@ -57,29 +57,29 @@ const MainScreen: React.FC<MainScreenProps> = ({
 
         {/* 🔹 Getting 텍스트 */}
         <span
-          className={`absolute text-white font-blacksWord font-light transition-opacity duration-1000 ${
+          className={`absolute text-white font-andreaBellarosa font-light transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
           style={{
             bottom: "37.5%",
-            left: "15%",
-            fontSize: "clamp(60px, 10vw, 120px)",
+            left: "5%",
+            fontSize: "clamp(80px, 10vw, 120px)",
             lineHeight: 1.2,
             willChange: "opacity",
           }}
         >
-          Getting
+          We're getting
         </span>
 
         {/* 🔹 Married 텍스트 */}
         <span
-          className={`absolute text-white font-blacksWord text-right transition-opacity duration-1000 ${
+          className={`absolute text-white font-andreaBellarosa text-right transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
           style={{
             bottom: "22.5%",
-            right: "15%",
-            fontSize: "clamp(60px, 10vw, 120px)",
+            right: "10%",
+            fontSize: "clamp(80px, 10vw, 120px)",
             lineHeight: 1,
             willChange: "opacity",
           }}
@@ -96,7 +96,7 @@ const MainScreen: React.FC<MainScreenProps> = ({
         >
           {/* 🔹 날짜 */}
           <div className="flex justify-between text-[4vw] sm:text-xl font-light tracking-widest">
-            <span className="font-semibold">{day}TH</span>
+            <span className="font-semibold">{day}th</span>
             <span className="font-semibold">{month}</span>
             <span className="font-semibold">{year}</span>
           </div>

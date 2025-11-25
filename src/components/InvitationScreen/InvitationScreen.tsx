@@ -1,6 +1,6 @@
 // src/components/InvitationScreen/InvitationScreen.tsx
 import React, { useEffect, useState } from "react";
-import introImage from "../../assets/images/intro-image.jpeg";
+import introImage from "../../assets/images/wedding-photos/2n.webp";
 
 interface ParentInfo {
   father: string;

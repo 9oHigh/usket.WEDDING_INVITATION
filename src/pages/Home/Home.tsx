@@ -5,7 +5,7 @@ import BackgroundMusic from "../../components/BackgroundMusic/BackgroundMusic";
 import { weddingMusicSrc } from "../../data/musicData";
 import MainScreen from "../../components/MainScreen/MainScreen";
 
-import mainBgImage2 from "../../assets/images/main-bg.png";
+import mainBgImage2 from "../../assets/images/main-bg.webp";
 import InvitationScreen from "../../components/InvitationScreen/InvitationScreen";
 import DateScreen from "../../components/DateScreen/DateScreen";
 import LocationScreen from "../../components/LocationScreen/LocationScreen";

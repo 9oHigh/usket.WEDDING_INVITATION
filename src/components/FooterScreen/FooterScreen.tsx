@@ -106,12 +106,14 @@ const FooterSection: React.FC = () => {
 
         {/* Made by */}
         <div className="text-center text-gray-500 text-xs space-y-2">
-          <p className="font-cafe24">
-            Made with{" "}
-            <span className="text-red-400 inline-block animate-pulse">♥</span>{" "}
-            by
+          <p className="font-cafe24">Made by </p>
+          <p className="font-cafe24 text-gray-400">
+            경후
+            <span className="text-red-400 inline-block animate-pulse">
+              ♥
+            </span>{" "}
+            유진
           </p>
-          <p className="font-cafe24 text-gray-400">경후 & 유진</p>
           <p className="font-cafe24 text-gray-400 text-[10px] mt-4">
             © 2026. All rights reserved.
           </p>

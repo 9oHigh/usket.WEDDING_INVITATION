@@ -3,24 +3,28 @@ import React, { useState } from "react";
 const AccountScreen = () => {
   const [trustExpanded, setTrustExpanded] = useState(true);
   const [newExpanded, setNewExpanded] = useState(true);
+  const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
 
-  const copyToClipboard = (text: string) => {
+  const copyToClipboard = (text: string, accountId: string) => {
     navigator.clipboard.writeText(text);
+    setCopiedAccount(accountId);
+    setTimeout(() => setCopiedAccount(null), 1000);
   };
 
   return (
-    <div className="min-h-screen bg-[#F5EFE6]">
+    <div className="min-h-screen bg-[#F5EFE6] px-8 py-16">
       {/* Header */}
-
-      <h2 className="text-sm font-cafe24 text-gray-500 mt-8 mb-1 tracking-widest">
-        FOR YOUR KIND BLESSING
-      </h2>
-      <h2 className="text-xl font-cafe24 font-bold text-gray-800">
-        마음 전하실 곳
-      </h2>
+      <div className="text-center mb-12">
+        <h2 className="text-sm font-cafe24 text-gray-500 mb-1 tracking-widest">
+          FOR YOUR KIND BLESSING
+        </h2>
+        <h2 className="text-xl font-cafe24 font-bold text-gray-800">
+          마음 전하실 곳
+        </h2>
+      </div>
 
       {/* Trust Account Section */}
-      <div className="mx-4 mb-4 mt-8">
+      <div className="max-w-md mx-auto mb-4">
         <button
           onClick={() => setTrustExpanded(!trustExpanded)}
           className="w-full bg-[#E4D4C8] rounded-lg px-6 py-4 flex justify-between items-center shadow-sm"
@@ -75,10 +79,10 @@ const AccountScreen = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => copyToClipboard("20308356006575")}
-                  className="font-cafe24 px-4 py-2 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                  onClick={() => copyToClipboard("20308356006575", "groom1")}
+                  className={`font-cafe24 px-4 py-2 border rounded text-sm transition-colors ${"border-gray-300 text-gray-600 hover:bg-gray-50"}`}
                 >
-                  복사
+                  {copiedAccount === "groom1" ? "복사완료" : "복사"}
                 </button>
               </div>
               <div className="font-cafe24 text-left text-gray-600 text-sm">
@@ -96,10 +100,10 @@ const AccountScreen = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => copyToClipboard("100001488126")}
-                  className="font-cafe24 px-4 py-2 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                  onClick={() => copyToClipboard("100001488126", "groom2")}
+                  className={`font-cafe24 px-4 py-2 border rounded text-sm transition-colors ${"border-gray-300 text-gray-600 hover:bg-gray-50"}`}
                 >
-                  복사
+                  {copiedAccount === "groom2" ? "복사완료" : "복사"}
                 </button>
               </div>
               <div className="font-cafe24 text-left text-gray-600 text-sm">
@@ -111,7 +115,7 @@ const AccountScreen = () => {
       </div>
 
       {/* New Account Section */}
-      <div className="mx-4 mb-4">
+      <div className="max-w-md mx-auto mb-4">
         <button
           onClick={() => setNewExpanded(!newExpanded)}
           className="w-full bg-[#E4D4C8] rounded-lg px-6 py-4 flex justify-between items-center shadow-sm"
@@ -166,10 +170,10 @@ const AccountScreen = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => copyToClipboard("25500518602001")}
-                  className="font-cafe24 px-4 py-2 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                  onClick={() => copyToClipboard("25500518602001", "bride1")}
+                  className={`font-cafe24 px-4 py-2 border rounded text-sm transition-colors ${"border-gray-300 text-gray-600 hover:bg-gray-50"}`}
                 >
-                  복사
+                  {copiedAccount === "bride1" ? "복사완료" : "복사"}
                 </button>
               </div>
               <div className="font-cafe24 text-left text-gray-600 text-sm">
@@ -187,10 +191,10 @@ const AccountScreen = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => copyToClipboard("1002463428768")}
-                  className="font-cafe24 px-4 py-2 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                  onClick={() => copyToClipboard("1002463428768", "bride2")}
+                  className={`font-cafe24 px-4 py-2 border rounded text-sm transition-colors ${"border-gray-300 text-gray-600 hover:bg-gray-50"}`}
                 >
-                  복사
+                  {copiedAccount === "bride2" ? "복사완료" : "복사"}
                 </button>
               </div>
               <div className="font-cafe24 text-left text-gray-600 text-sm">
@@ -198,7 +202,7 @@ const AccountScreen = () => {
               </div>
             </div>
 
-            {/* Account 3 - Kakao Pay */}
+            {/* Account 3 */}
             <div className="px-6 py-5">
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-3">
@@ -208,10 +212,10 @@ const AccountScreen = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => copyToClipboard("1002151197398")}
-                  className="font-cafe24 px-4 py-2 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50"
+                  onClick={() => copyToClipboard("1002151197398", "bride3")}
+                  className={`font-cafe24 px-4 py-2 border rounded text-sm transition-colors ${"border-gray-300 text-gray-600 hover:bg-gray-50"}`}
                 >
-                  복사
+                  {copiedAccount === "bride3" ? "복사완료" : "복사"}
                 </button>
               </div>
               <div className="font-cafe24 text-gray-600 text-sm text-left">
