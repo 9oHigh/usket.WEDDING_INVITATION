@@ -161,7 +161,7 @@ const LocationScreen: React.FC<LocationScreenProps> = ({
         </div>
         {/* 교통 정보 - 세로 배치 */}
         <div
-          className={`transform transition-all duration-1000 delay-400 ${
+          className={` ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >

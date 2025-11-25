@@ -120,7 +120,7 @@ const DateScreen: React.FC<DateScreenProps> = ({
   return (
     <section
       id="date-section"
-      className="bg-[#F5EFE6] relative h-screen w-full flex flex-col justify-center items-center px-8 py-20"
+      className="bg-[#F5EFE6] relative w-full flex flex-col justify-center items-center px-8 py-20"
     >
       <div className="w-full max-w-md">
         {/* 날짜 표시 */}
@@ -170,14 +170,15 @@ const DateScreen: React.FC<DateScreenProps> = ({
 
         {/* 구분선 */}
         <div
-          className={`w-full h-px bg-gray-300 mb-8 transform transition-all duration-1000 delay-400 ${
+          className={`w-full h-px bg-gray-300 mb-8 ${
             isVisible ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
           }`}
         ></div>
 
         {/* 카운트다운 타이머 */}
         <div
-          className={`text-center mb-8 transform transition-all duration-1000 delay-500 ${
+          className={`text-center mb-8 
+             delay-500 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
