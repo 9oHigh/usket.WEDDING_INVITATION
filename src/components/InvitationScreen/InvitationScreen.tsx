@@ -53,7 +53,7 @@ const InvitationScreen: React.FC<InvitationScreenProps> = ({
     >
       {/* Invitation 타이틀 */}
       <div
-        className={`text-center mb-12 transform transition-all duration-1000 ${
+        className={`text-center mb-12  ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
@@ -69,7 +69,7 @@ const InvitationScreen: React.FC<InvitationScreenProps> = ({
 
       {/* 인사말 */}
       <div
-        className={`text-center mb-12 max-w-md transform transition-all duration-1000 delay-300 ${
+        className={`text-center mb-12 max-w-md  delay-300 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
@@ -80,7 +80,7 @@ const InvitationScreen: React.FC<InvitationScreenProps> = ({
 
       {/* 사진 - 고정 비율 유지 */}
       <div
-        className={`mb-8 w-[80vw] max-w-md relative rounded-lg overflow-hidden shadow-lg transform transition-all duration-1000 delay-400 ${
+        className={`mb-8 w-[80vw] max-w-md relative rounded-lg overflow-hidden shadow-lg  delay-400 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
         style={{ aspectRatio: "1 / 1" }}
@@ -102,7 +102,7 @@ const InvitationScreen: React.FC<InvitationScreenProps> = ({
 
       {/* 부모님 정보 */}
       <div
-        className={`w-full max-w-sm space-y-6 transform transition-all duration-1000 delay-500 ${
+        className={`w-full max-w-sm space-y-6  delay-500 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >

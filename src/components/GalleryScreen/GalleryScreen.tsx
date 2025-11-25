@@ -114,7 +114,7 @@ const GalleryScreen: React.FC<GalleryScreenProps> = ({ images }) => {
         {/* ✅ 더보기 버튼 (중앙 정렬 + 작은 사이즈) */}
         {!showAll && images.length > 6 && (
           <div
-            className={`flex justify-center transform transition-all duration-1000 delay-400 ${
+            className={`flex justify-center  ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"

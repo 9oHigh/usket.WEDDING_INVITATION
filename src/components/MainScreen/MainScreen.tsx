@@ -39,8 +39,8 @@ const MainScreen: React.FC<MainScreenProps> = ({
   }
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-white">
-      <div className="relative w-full h-full max-w-[720px] mx-auto">
+    <section className="relative w-full overflow-hidden bg-white">
+      <div className="relative w-full h-[100lvh] max-w-[720px] mx-auto">
         {/* 🔹 배경 이미지 */}
         <img
           src={backgroundImage}
