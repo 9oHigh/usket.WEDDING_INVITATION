@@ -164,7 +164,7 @@ const AccountScreen = () => {
             <div className="px-6 py-5">
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-cafe24 text-gray-500">우리은행</span>
+                  <span className="font-cafe24 text-gray-500">우리</span>
                   <span className="font-cafe24 text-gray-800 tracking-wide">
                     255-005186-02-001
                   </span>
@@ -185,7 +185,7 @@ const AccountScreen = () => {
             <div className="px-6 py-5">
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-cafe24 text-gray-500">우리은행</span>
+                  <span className="font-cafe24 text-gray-500">우리</span>
                   <span className="font-cafe24 text-gray-800 tracking-wide">
                     1002-4634-28768
                   </span>
@@ -206,7 +206,7 @@ const AccountScreen = () => {
             <div className="px-6 py-5">
               <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-cafe24 text-gray-500">우리은행</span>
+                  <span className="font-cafe24 text-gray-500">우리</span>
                   <span className="font-cafe24 text-gray-800 tracking-wide">
                     1002-151-197398
                   </span>

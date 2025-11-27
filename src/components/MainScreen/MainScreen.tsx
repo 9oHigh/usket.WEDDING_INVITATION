@@ -13,17 +13,29 @@ const MainScreen: React.FC<MainScreenProps> = ({
   weddingDate,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [vh, setVh] = useState(window.innerHeight * 0.01);
+
+  // 🔹 100vh 버그 해결 - resize 시 업데이트
+  useEffect(() => {
+    const updateVh = () => {
+      setVh(window.innerHeight * 0.01);
+    };
+
+    updateVh(); // 최초 1회 실행
+    window.addEventListener("resize", updateVh);
+    return () => window.removeEventListener("resize", updateVh);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
 
-  // ✅ 날짜 파싱 개선
+  // 날짜 파싱
   const parseDate = (dateString: string) => {
     const parts = dateString.split("-");
     const year = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1; // 월은 0부터 시작
+    const month = parseInt(parts[1], 10) - 1;
     const day = parseInt(parts[2], 10);
     return new Date(year, month, day);
   };
@@ -33,15 +45,17 @@ const MainScreen: React.FC<MainScreenProps> = ({
   const month = "Jan";
   const year = date.getFullYear();
 
-  // 날짜가 유효한지 확인
   if (isNaN(date.getTime())) {
     console.error("Invalid date:", weddingDate);
   }
 
   return (
     <section className="relative w-full overflow-hidden bg-[#F5EFE6]">
-      <div className="relative w-full h-screen max-w-[720px] mx-auto">
-        {/* 🔹 배경 이미지 */}
+      <div
+        className="relative w-full max-w-[720px] mx-auto"
+        style={{ height: `calc(${vh}px * 100)` }} // ← 100vh 대체
+      >
+        {/* 배경 이미지 */}
         <img
           src={backgroundImage}
           alt="Wedding Background"
@@ -52,10 +66,10 @@ const MainScreen: React.FC<MainScreenProps> = ({
           }}
         />
 
-        {/* 🔹 반투명 오버레이 */}
+        {/* 오버레이 */}
         <div className="absolute inset-0 bg-black/25" />
 
-        {/* 🔹 Getting 텍스트 */}
+        {/* Getting 텍스트 */}
         <span
           className={`absolute text-white font-andreaBellarosa font-light transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
@@ -71,7 +85,7 @@ const MainScreen: React.FC<MainScreenProps> = ({
           We're getting
         </span>
 
-        {/* 🔹 Married 텍스트 */}
+        {/* Married 텍스트 */}
         <span
           className={`absolute text-white font-andreaBellarosa text-right transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
@@ -87,21 +101,19 @@ const MainScreen: React.FC<MainScreenProps> = ({
           Married
         </span>
 
-        {/* 🔹 날짜 + 인디케이터 */}
+        {/* 날짜 + 인디케이터 */}
         <div
           className={`absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[80%] max-w-[600px] text-white transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
           style={{ willChange: "opacity" }}
         >
-          {/* 🔹 날짜 */}
           <div className="flex justify-between text-[4vw] sm:text-xl font-light tracking-widest">
             <span className="font-semibold">{day}th</span>
             <span className="font-semibold">{month}</span>
             <span className="font-semibold">{year}</span>
           </div>
 
-          {/* 🔹 인디케이터 */}
           <div
             className={`mt-3 flex justify-center animate-bounce transition-opacity duration-1000 delay-1000 ${
               isVisible ? "opacity-60" : "opacity-0"

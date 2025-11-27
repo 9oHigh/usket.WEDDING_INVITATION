@@ -66,8 +66,8 @@ const Home: React.FC = () => {
         venueName="라비니움 리츄얼홀"
         venueAddress="서울 강동구 천호대로 1017"
         venueDetail="라비니움 웨딩홀 3층"
-        latitude={37.5384705}
-        longitude={127.1224449}
+        latitude={37.5384803551442}
+        longitude={127.12241448391326}
         phone="02-476-7000"
       />
       {/* 6. 계좌 정보 화면 */}
